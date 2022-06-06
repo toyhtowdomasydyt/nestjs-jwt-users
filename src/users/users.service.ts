@@ -13,7 +13,9 @@ export class UsersService {
   }
 
   async getAllUsers() {
-    const users = await this.userRepository.findAll();
+    const users = await this.userRepository.findAll({
+      attributes: { exclude: ['password'] },
+    });
     return users;
   }
 
